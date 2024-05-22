@@ -9,14 +9,42 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  font-family: sans-serif;
 }
 
+.colorpick-eyedropper-input-trigger {
+  display: none;
+}
 
 .ui {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+ 
+}
+
+.ui .ui-btn {
+  display: flex;
+  align-items: center;
+}
+
+.ui h1 {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.color-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 5px;
+}
+
+p {
+  font-size: 12px;
 }
 
 .reset {
@@ -31,4 +59,17 @@ canvas {
 
 .hide {
   display: none;
+}
+
+.camera {
+  margin: 0 10px;
+}
+
+button {
+  background: rgb(37, 147, 238);
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }

@@ -10,7 +10,6 @@ function setup() {
 function draw() {
   if(showCapture) {
     pixelizeImg(capture, pixelation_level, true)
-    console.log(capture)
   }
 }
 
@@ -19,6 +18,9 @@ function draw() {
 const fileInput = document.querySelector(".file-input")
 const resetBtn = document.querySelector(".reset")
 const cameraBtn = document.querySelector(".camera")
+const baseColor = document.querySelector(".base-color")
+const bgColor = document.querySelector(".background-color")
+const UI = document.querySelector(".ui")
 
 fileInput.addEventListener("change", displayImg)
 resetBtn.addEventListener("click", () => {
@@ -26,13 +28,11 @@ resetBtn.addEventListener("click", () => {
   showCapture = false 
   fileInput.value = ""
   resetBtn.classList.add("hide")
-  fileInput.classList.remove("hide")
-  cameraBtn.classList.remove("hide")
+  UI.classList.remove("hide")
   clear()
 })
 cameraBtn.addEventListener("click", () => {
-  fileInput.classList.add("hide")
-  cameraBtn.classList.add("hide")
+  UI.classList.add("hide")
   resetBtn.classList.remove("hide")
   capture = createCapture(VIDEO)
   capture.hide()
@@ -43,8 +43,7 @@ function displayImg(e) {
   const myImageFile = e.target.files[0]
   let urlOfImageFile = URL.createObjectURL(myImageFile)
   img = loadImage(urlOfImageFile, () => pixelizeImg(img, pixelation_level))
-  fileInput.classList.add("hide")
-  cameraBtn.classList.add("hide")
+  UI.classList.add("hide")
   setTimeout(() => {
     resetBtn.classList.remove("hide")
   }, 5000)
@@ -68,16 +67,16 @@ function pixelizeImg(img, pixelation_level, isVideo) {
       // Calculate brightness
       let brightness = 0.299 * r + 0.587 * g + 0.114 * b
       // Determine color based on brightness and threshold
-      let color = brightness > threshold ? 255 : 0
+      let color = brightness > threshold ? bgColor.value : baseColor.value
 
       if(!isVideo) {
         // add delay on pixelization
         setTimeout(() => {
-          fill(`rgb(${color}, ${color}, ${color})`)
+          fill(color)
           rect(x, y, 50, 50)
         }, y * 5)
       } else {
-        fill(`rgb(${color}, ${color}, ${color})`)
+        fill(color)
         rect(x, y, 50, 50)
       }
     }

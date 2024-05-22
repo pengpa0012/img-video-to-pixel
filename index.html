@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IMG VIDEO TO PIXEL</title>
+  <title>PIXELIZED</title>
   <script src="./assets/js/script.js" defer></script>
   <script src="./assets/js/p5.min.js" defer></script>
   <script src="./assets/js/p5.sound.min.js" defer></script>
@@ -11,8 +11,19 @@
 </head>
 <body>
   <div class="ui">
-    <input type="file" class="file-input">
-    <button class="camera">camera</button>
+    <h1>Pixelized</h1>
+    <div class="ui-btn">
+      <input type="file" class="file-input">
+      <div class="color-input">
+        <p>Base Color:</p>
+        <input type="color" class="base-color">
+      </div>
+      <div class="color-input">
+        <p>BG Color:</p>
+        <input type="color" class="background-color" value="#ffffff" >
+      </div>  
+      <button class="camera">camera</button>
+    </div>
   </div>
   <button class="reset hide">reset</button>
 </body>
